@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>adorable calculator</title>
+	<link rel="stylesheet", type="text/css", href="style.css">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+		}
+
+		body{
+			background-color: #1f1f1f;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.calculator
+		{
+			border: 1px solid #333;
+			background-color: #ccc;
+			padding: 5px;
+		}
+
+		.calculator form{
+			display: grid;
+			grid-template-columns: repeat(4,65px);
+			grid-auto-rows: 65px;
+			grid-gap: 5px;
+		}
+
+		.calculator form input{
+			border:2px solid #333;
+			cursor: pointer;
+			font-size: 20px;
+		}
+
+		.calculator form input:hover{
+			box-shadow: 1px 1px 2px #313;
+		}
+
+		.calculator form input.clear{
+			background-color: red;
+		}
+		.calculator form input.operator{
+			background-color: orange;
+		}
+		.calculator form input.dot{
+			background-color: green;
+		}
+		.calculator form input[type='text']{
+			grid-column: span 4;
+			text-align: right;
+			padding:0 10px;
+		}
+		.calculator form .clear{
+			grid-column: span 2;
+		}
+		.calculator form .result{
+			grid-column: span 2;
+		}
+		.calculator form .backspace{
+			background-color: gray;
+		}
+	</style>
+	<script>
+		function backspace(){
+			var inputValue = document.forms.result.value;
+			if (inputValue.length) {
+				document.forms.result.value = inputValue.slice(0, -1);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="calculator">
+		<form name="forms">
+			<input type="text" name="result" readonly>
+			<input type="button" class="clear" value="C" onclick="document.forms.result.value=''">
+			<input type="button" class="backspace" value="<-" onclick="backspace()">
+			<input type="button" class="operator" value="/" onclick="document.forms.result.value+='/'">
+			<input type="button" class="number" value="1" onclick="document.forms.result.value+='1'">
+			<input type="button" class="number" value="2" onclick="document.forms.result.value+='2'">
+			<input type="button" class="number" value="3" onclick="document.forms.result.value+='3'">
+			<input type="button" class="operator" value="*" onclick="document.forms.result.value+='*'">
+			<input type="button" class="number" value="4" onclick="document.forms.result.value+='4'">
+			<input type="button" class="number" value="5" onclick="document.forms.result.value+='5'">
+			<input type="button" class="number" value="6" onclick="document.forms.result.value+='6'">
+			<input type="button" class="operator" value="+" onclick="document.forms.result.value+='+'">
+			<input type="button" class="number" value="7" onclick="document.forms.result.value+='7'">
+			<input type="button" class="number" value="8" onclick="document.forms.result.value+='8'">
+			<input type="button" class="number" value="9" onclick="document.forms.result.value+='9'">
+			<input type="button" class="operator" value="-" onclick="document.forms.result.value+='-'">
+			<input type="button" class="dot" value="." onclick="document.forms.result.value+='.'">
+			<input type="button" class="number" value="0" onclick="document.forms.result.value+='0'">
+			<input type="button" class="operator result" value="=" onclick="document.forms.result.value=eval(document.forms.result.value)">
+		</form>
+	</div>
+
+</body>
+</html>
